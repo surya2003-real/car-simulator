@@ -1,0 +1,203 @@
+<?xml version="1.0" ?>
+<robot name="newcar" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find newcar_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find newcar_description)/urdf/newcar.trans" />
+<xacro:include filename="$(find newcar_description)/urdf/gazebo.xacro" />
+<xacro:include filename="$(find newcar_description)/urdf/lidar.xacro" />
+<xacro:include filename="$(find newcar_description)/urdf/gazebo_control.xacro" />
+<xacro:include filename="$(find newcar_description)/urdf/camera.xacro" />
+<link name="base_link"></link>
+<link name="chassis">
+  <inertial>
+    <origin xyz="0.09999999999999895 -0.41172509573212546 0.9489114115806402" rpy="0 0 0"/>
+    <mass value="11894.478895245358"/>
+    <inertia ixx="4655.696852" iyy="1985.394061" izz="5356.330131" ixy="0.0" iyz="43.457842" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/base_link.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="paint_metallic_yellow"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/base_link.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="flwheel_1">
+  <inertial>
+    <origin xyz="0.11499999999999866 -3.3306690738754696e-16 4.440892098500626e-16" rpy="0 0 0"/>
+    <mass value="214.97431581653674"/>
+    <inertia ixx="6.234851" iyy="4.065104" izz="4.065104" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.5 -0.3 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/flwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="paint_enamel_glossy_blue"/>
+  </visual>
+  <collision>
+    <origin xyz="0.5 -0.3 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/flwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="blwheel_1">
+  <inertial>
+    <origin xyz="0.11500000000000155 6.661338147750939e-16 2.220446049250313e-16" rpy="0 0 0"/>
+    <mass value="214.9743158165368"/>
+    <inertia ixx="6.234851" iyy="4.065104" izz="4.065104" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.5 1.1 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/blwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="paint_enamel_glossy_blue"/>
+  </visual>
+  <collision>
+    <origin xyz="0.5 1.1 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/blwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="brwheel_1">
+  <inertial>
+    <origin xyz="-0.114999999999997 3.1086244689504383e-15 7.105427357601002e-15" rpy="0 0 0"/>
+    <mass value="34.23157895167783"/>
+    <inertia ixx="0.992811" iyy="0.64731" izz="0.64731" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.7 1.1 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/brwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="paint_enamel_glossy_blue"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.7 1.1 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/brwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="frwheel_1">
+  <inertial>
+    <origin xyz="-0.11499999999999977 2.3869795029440866e-15 7.216449660063518e-15" rpy="0 0 0"/>
+    <mass value="34.23157895167784"/>
+    <inertia ixx="0.992811" iyy="0.64731" izz="0.64731" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.7 -0.3 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/frwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="paint_enamel_glossy_blue"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.7 -0.3 -0.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/frwheel_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_1">
+  <inertial>
+    <origin xyz="-3.094746681142624e-15 0.025000000000001465 3.885780586188048e-15" rpy="0 0 0"/>
+    <mass value="1.9261889957322356"/>
+    <inertia ixx="0.00311" iyy="0.005417" izz="0.00311" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 -0.7 -0.85" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/camera_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="silicone_white"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 -0.7 -0.85" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/camera_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="-1.1726730697603216e-14 1.6653345369377348e-16 0.0500000000000036" rpy="0 0 0"/>
+    <mass value="4.335397861953915"/>
+    <inertia ixx="0.014451" iyy="0.014451" izz="0.021677" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 0.5 -1.6" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/lidar_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="plastic_matte_red"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 0.5 -1.6" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find newcar_description)/meshes/lidar_1.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 1" type="continuous">
+  <origin xyz="-0.5 0.3 0.65" rpy="-0.707 0 0"/>
+  <parent link="base_link"/>
+  <child link="flwheel_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="Revolute 2" type="continuous">
+  <origin xyz="-0.5 -1.1 0.65" rpy="-0.707 0 0"/>
+  <parent link="base_link"/>
+  <child link="blwheel_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="Revolute 3" type="continuous">
+  <origin xyz="0.7 -1.1 0.65" rpy="0.707 0 0"/>
+  <parent link="base_link"/>
+  <child link="brwheel_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Revolute 4" type="continuous">
+  <origin xyz="0.7 0.3 0.65" rpy="0.707 0 0"/>
+  <parent link="base_link"/>
+  <child link="frwheel_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rigid 5" type="fixed">
+  <origin xyz="0.1 0.7 0.85" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_1"/>
+</joint>
+
+<joint name="Rigid 6" type="fixed">
+  <origin xyz="0.1 -0.5 1.6" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+<joint name="chassis_joint" type="fixed">
+  <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="chassis"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+</robot>

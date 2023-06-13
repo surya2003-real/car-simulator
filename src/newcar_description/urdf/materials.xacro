@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<robot name="newcar" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<material name="silver_default">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+<material name="paint_metallic_yellow">
+  <color rgba="0.9098039215686274 0.6784313725490196 0.13725490196078433 1.0"/>
+</material>
+<material name="paint_enamel_glossy_blue">
+  <color rgba="0.18823529411764706 0.23137254901960785 0.5882352941176471 0.0"/>
+</material>
+<material name="silicone_white">
+  <color rgba="0.9647058823529412 0.9647058823529412 0.9529411764705882 1.0"/>
+</material>
+<material name="plastic_matte_red">
+  <color rgba="0.7686274509803922 0.20784313725490197 0.15294117647058825 1.0"/>
+</material>
+
+</robot>
